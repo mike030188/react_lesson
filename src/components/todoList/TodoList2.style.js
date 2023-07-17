@@ -19,7 +19,7 @@ P{
 export const Container = styled.div`
 display: flex;
 
-border: 1px solid red;
+border-top: 2.5px solid darkgrey;
 height: 390px;
 width: 1000px;
 `
@@ -27,18 +27,17 @@ width: 1000px;
 export const Input = styled.div`
 display:flex;
 width: 1000px;
-margin-bottom: 30px;
+margin-bottom: 15px;
 
 input{
     width: 100%;
-    border:1px solid #2c6beb;
     margin-right: 30px;    
     border-radius: 7px;
     padding: 10px;
     font-size:16px;
-
-    
+    border:none;    
 }
+
 
 
 
@@ -57,11 +56,8 @@ button{
 
 export const Title = styled.div`
 display: flex;
-justify-content: center;
+align-items: center;
 width: 1000px;
-border: 1px solid black;
+font-weight: 600;
 
-div{
-    flex:1;
-}
 `

@@ -37,11 +37,27 @@ const TodoList2 = () => {
             </button>
             </Input>   
             <Title>
-                <div>#</div>
-                <div>Task Name</div>
-                <div>Status</div>
-                <div>Edit</div>
-                <div>Remove</div>
+                <div style={{display:'flex', 
+                    flex: '1', 
+                    justifyContent: 'center'
+                }}>#</div>
+                <div style={{display:'flex', 
+                    flex: '4', 
+                    justifyContent: 'center'
+                }}>Task Name</div>
+                <div style={{display:'flex', 
+                    flex: '2', 
+                    justifyContent: 'center'
+                }}>Status</div>
+                <div style={{display:'flex', 
+                    flex: '2', 
+                    justifyContent: 'center'
+                }}>Edit</div>
+                <div style={{display:'flex', 
+                    flex: '2', 
+                    justifyContent: 'right',
+                    paddingRight:'8px'
+            }}>Remove</div>
             </Title>
       <Container>
         
