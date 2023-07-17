@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaTrashAlt } from "react-icons/fa";
+import { FaEdit, FaTrashAlt } from "react-icons/fa";
 import { Container, Input, Main, Todos } from "./TodoList1.style";
 
 function toListInfo() {
@@ -25,6 +25,11 @@ const TodoList1 = () => {
   const deleteTodo = (id) => {
     setTodoList(todoList.filter((item) => item.id !== id));
   };
+
+  const editTodo = (id) => {
+    setTodoList(todoList.map(item => item.id === id ? {
+      ...item, isEditing: !item.isEditing} : item ))
+  }
 
   return (
     <Main>
@@ -70,7 +75,11 @@ const TodoList1 = () => {
                 }} 
                     key={item.id}>
                 <div>{item.text}</div>
-                <div style={{padding:'10px 12px', borderRadius:'8px', backgroundColor:'#1c1ca1'}}><FaTrashAlt color="white" onClick={() => deleteTodo(item.id)} /></div>
+                <div style={{display:'flex'}}>
+                    <div style={{marginRight:'15px', padding:'10px 12px 0 15px', borderRadius:'8px', backgroundColor:'#1c1ca1'}}><FaEdit color="white" onClick={() => editTodo(item.id)} /></div>
+                    <div style={{padding:'10px 12px', borderRadius:'8px', backgroundColor:'#1c1ca1'}}><FaTrashAlt color="white" onClick={() => deleteTodo(item.id)} /></div>
+
+                </div>
                 
               </div>
             ))}
