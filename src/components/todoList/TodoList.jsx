@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function toListInfo () {
     const toDoListText = [];
-    for (let i=0; i < 0; i++) {
+    for (let i=0; i < 30; i++) {
          toDoListText.push({ 
         id: i,
         text: 'Item:' + (i + 1),
@@ -20,7 +20,7 @@ const TodoList = () => {
         setText(e.target.value);
     };
   return (
-    <div style={{display:'grid'}}>
+    <div style={{display:'grid', paddingLeft:'100px'}}>
         <div style={{display:'flex'}}>
             <input type="text" value={text} onChange={handleChange}/>
             <button 
@@ -35,7 +35,7 @@ const TodoList = () => {
             }}>SAVE</button>
         </div>
         <p>{todoList.map((item) => (
-            <div key={item.id}>{item.text}</div>
+            <li key={item.id}>{item.text}</li>
         ))}
         </p>
     </div>

@@ -9,19 +9,20 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 font-family: 'Roboto', sans-serif;
-border: 1px solid red;
 
-P{
-    
-}
 `
 
 export const Container = styled.div`
-display: flex;
-
 border-top: 2.5px solid darkgrey;
 height: 390px;
 width: 1000px;
+
+p{  
+    
+:hover{
+    cursor: pointer;  
+    }
+}
 `
 
 export const Input = styled.div`
@@ -37,10 +38,6 @@ input{
     font-size:16px;
     border:none;    
 }
-
-
-
-
 
 button{
     background-color: #FFF;
@@ -59,5 +56,23 @@ display: flex;
 align-items: center;
 width: 1000px;
 font-weight: 600;
+font-size:20px;
+`
 
+export const Task = styled.div`
+display: flex;
+align-items: center;
+padding: 10px 0;
+border-bottom: 1px solid darkgrey;
+background-color: #FFF;
+font-size: 20px;
+letter-spacing: 1.5px;
+
+
+button{
+        border-radius: 8px;
+        background-color: transparent;
+         
+        font-size: 18px;
+    }
 `
