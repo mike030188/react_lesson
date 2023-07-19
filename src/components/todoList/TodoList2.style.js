@@ -48,8 +48,12 @@ button{
     font-size: 16px;
     color: #00ffff;
     font-weight: 500;
+    
 }
+
+
 `
+
 
 export const Title = styled.div`
 display: flex;

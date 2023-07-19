@@ -14,6 +14,7 @@ function toListInfo() {
   
     return toDoListText;
   }
+ 
 
 const TodoList2 = () => {
     const [todoList, setTodoList] = useState(toListInfo);
@@ -27,6 +28,8 @@ const TodoList2 = () => {
     setTodoList(todoList.filter((item) => item.id !== id));
     };
 
+   
+
   return (
     <Main>
         <div style={{display:'flex', flexDirection:'column', width:'1000px'}}>
@@ -36,27 +39,16 @@ const TodoList2 = () => {
                 }}>Do it now.</p> 
         </div>     
         <Input>
-            <input    
-                      
-                type="text"
-                value={text}
-                onChange={handleChange}
-            />
-            <button            
-                onClick={() => {
-                setText("");
-                setTodoList([
-                    {
+            <input type="text" value={text} onChange={handleChange} />
+            <button onClick={() => {setText(""); 
+                    setTodoList([{
                     id: todoList.length,
                     text: text,
                     },
                     ...todoList,
                 ]);
-                }}
-            >
-                Add Task
-            </button>
-            </Input>   
+                }}>Add Task</button>
+        </Input>               
             <Title>
                 <div style={{display:'flex', 
                     flex: '1', 
@@ -80,22 +72,16 @@ const TodoList2 = () => {
                 }}>Edit</div>
                 <div style={{display:'flex', 
                     flex: '1', 
-                    justifyContent: 'center',
+                    justifyContent: 'center',                   
                     
-                    
-            }}>Remove</div>
+                }}>Remove</div>
             </Title>
-      <Container>
-                    
-            <p>
-                {todoList.map((item) => (
-                    
+      <Container>                    
+            <p>{todoList.sort((a, b) => a.id > b.id ? 1 : -1).map((item) => (                    
                 <Task key={item.id}>
                     <div style={{display:'flex', 
                                 flex: '1', 
-                                justifyContent: 'center',
-                                
-
+                                justifyContent: 'center'
                                 }}>{item.id}</div>
 
                     <div style={{display:'flex', 
@@ -104,6 +90,7 @@ const TodoList2 = () => {
                                 textAligLast: 'justify',
                                 
                                 }}>{item.text}</div>
+                                
                     <div style={{display:'flex', 
                                 flex: '2', 
                                 justifyContent: 'center',                        
@@ -139,10 +126,7 @@ const TodoList2 = () => {
                 </Task>
                 ))}
             </p>
-            
-            
-
-      </Container>
+        </Container>
     </Main>
   );
 };
