@@ -3,13 +3,14 @@ import {Container, Input, Main, Task, Title} from "./TodoList2.style";
 import { FaTrashAlt } from "react-icons/fa";
 import {GrEdit} from 'react-icons/gr';
 
+
 function toListInfo() {
     const toDoListText = [];
     for (let i = 0; i < 0; i++) {
       toDoListText.push({
         id: i,
         text: (i + 1),
-        status: false,
+        status: "Todo",
       });
     }
   
@@ -27,9 +28,15 @@ const TodoList2 = () => {
         setText(e.target.value);
       };
 
-    const deleteTodo = (id) => {
-    setTodoList(todoList.filter((item) => item.id !== id));
-    };
+    const statusTodo = () => {
+        if (todoList(item.status) === "Todo") {
+            item.status == "In Progress";
+        } else if (todoList(item.status) === "In Process") {
+            item.status == "Completed";
+        }
+        return item.status     
+
+    }
 
     const handleEditClick = (id, text) => {
         setEditItemId(id);
@@ -43,7 +50,10 @@ const TodoList2 = () => {
         setEditItemId(null);
         setEditText("");
       };
-   
+
+      const deleteTodo = (id) => {
+        setTodoList(todoList.filter((item) => item.id !== id));
+        };
 
   return (
     <Main>
@@ -115,10 +125,11 @@ const TodoList2 = () => {
                                 flex: '2', 
                                 justifyContent: 'center',                        
 
-                                }}><button style={{border:'1px solid orange',
+                                }}>
+                                    <button style={{border:'1px solid orange',
                                                 padding:'10px',
                                                 color:'orange'
-                                                }}>In process</button></div>       
+                                                }} onClick={() => statusTodo(item.id)}>{item.status}</button></div>       
                                              
                     <div style={{display:'flex', 
                                 flex: '1',  
