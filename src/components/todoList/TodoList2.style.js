@@ -20,7 +20,7 @@ width: 1000px;
 p{  
     
 :hover{
-    cursor: pointer;  
+    /* cursor: pointer;  */ 
     }
 }
 `
@@ -36,7 +36,9 @@ input{
     border-radius: 7px;
     padding: 10px;
     font-size:16px;
-    border:none;    
+    border:none; 
+    
+    
 }
 
 button{

@@ -9,6 +9,7 @@ function toListInfo() {
       toDoListText.push({
         id: i,
         text: (i + 1),
+        status: false,
       });
     }
   
@@ -19,6 +20,8 @@ function toListInfo() {
 const TodoList2 = () => {
     const [todoList, setTodoList] = useState(toListInfo);
     const [text, setText] = useState("");
+    const [editText, setEditText] = useState("");
+    const [editItemId, setEditItemId] = useState("");
 
     const handleChange = (e) => {
         setText(e.target.value);
@@ -28,6 +31,18 @@ const TodoList2 = () => {
     setTodoList(todoList.filter((item) => item.id !== id));
     };
 
+    const handleEditClick = (id, text) => {
+        setEditItemId(id);
+        setEditText(text);
+      };
+    
+      const handleSaveClick = (id) => {
+        setTodoList(
+          todoList.map((item) => item.id === id ? { ...item, text: editText, isEditing: false } : item)
+        );
+        setEditItemId(null);
+        setEditText("");
+      };
    
 
   return (
@@ -82,14 +97,19 @@ const TodoList2 = () => {
                     <div style={{display:'flex', 
                                 flex: '1', 
                                 justifyContent: 'center'
-                                }}>{item.id}</div>
+                                }}>{item.id+1}</div>
 
                     <div style={{display:'flex', 
                                 flex: '5', 
                                 justifyContent: 'center',
                                 textAligLast: 'justify',
                                 
-                                }}>{item.text}</div>
+                                }}>{editItemId === item.id ? (
+
+                                <input type="text" style={{padding:'10px 12px', borderStyle:'dotted', fontSize:'16px', fontStyle:'italic', color:"red"}}
+                                    value={editText} 
+                                    onChange={(e) => setEditText(e.target.value)} />) : (item.text)}
+                    </div>
                                 
                     <div style={{display:'flex', 
                                 flex: '2', 
@@ -105,10 +125,24 @@ const TodoList2 = () => {
                                 justifyContent:'center', 
                                 border:'none',
                                                    
-                                }}>
-                                    <button style={{padding:'10px 12px', border:'1px solid #00ffff',}}>
-                                        <GrEdit style={{fontSize:'20px', color:'#00ffff'}} /* onClick={() => editTodo(item.id)}  *//>
-                                    </button>
+                                }}> {editItemId !== item.id ? (
+                                        <button style={{padding:'10px 12px', border:'1px solid #00ffff'}}
+                                            onClick={() => handleEditClick(item.id, item.text)}>
+                                            <GrEdit style={{fontSize:'20px', color:'#00ffff'}} />
+                                        </button>
+                                    ) : (
+                                        <div style={{display: 'flex'}}>
+                                            <button style={{
+                                                backgroundColor: 'transparent',
+                                                borderRadius: "8px",
+                                                border:'1px solid grey',
+                                                padding: "10px 12px",
+                                                color:'darkgrey',
+                                            }} onClick={() => handleSaveClick(item.id)}> Save </button>
+                                        </div> 
+                                        )
+                                    }
+                                    
                     </div>
 
                     <div style={{ display:'flex',
@@ -118,7 +152,8 @@ const TodoList2 = () => {
                                 
                                 }}>
                                     <button style={{padding:'10px 12px', border:'1px solid grey', }}>
-                                        <FaTrashAlt style={{color:'darkgrey', fontSize:'20px'}} onClick={() => deleteTodo(item.id)} />
+                                        <FaTrashAlt style={{color:'darkgrey', fontSize:'20px'}} 
+                                            onClick={() => deleteTodo(item.id)} />
                                     </button>
                                 
                     </div>
