@@ -1,9 +1,9 @@
-import {useRef} from 'react';
+import {useRef, useState} from 'react';
 
 
  /* alert button */ 
 
-// export default function UseRefComponent () {
+// export default function UseRefComponent() {
 //     let ref = useRef(0);
     
 //     function handleClick() {
@@ -21,16 +21,59 @@ import {useRef} from 'react';
 
 /* Input(focus) on Alert Button */
 
-export default function () {
-    let inputRef = useRef(null);
+// export default function UseRefComponent() {
+//     let inputRef = useRef(null);
 
-    function handleClick() {
-        inputRef.current.focus();
+//     function handleClick() {
+//         inputRef.current.focus();
+//     }
+//     return (
+//         <>
+//             <input type="text" ref={inputRef}></input>
+//             <button onClick={handleClick}>Alert Button</button>
+//         </>
+//     )
+// }
+
+
+/* Timer */
+
+export default function UseRefComponent(){
+    const [startTime, setStartTime] = useState(null);
+    const [liveTime, setLiveTime] = useState(null);
+    const secondSetting = useRef(null);
+
+    const handleStart = () => {
+        setStartTime(Date.now);
+        setLiveTime(Date.now);
+
+        clearInterval(secondSetting.current);
+        secondSetting.current = setInterval(() => {
+            setLiveTime(Date.now());
+        }, 10);
+    };
+    const handleStop = () => {
+        clearInterval(secondSetting.current);       
     }
-    return (
+
+    let timeShow = 0;
+        if (startTime != null && liveTime != null) {
+            timeShow = (liveTime - startTime) / 1000;
+        }
+
+    
+    return(
         <>
-            <input type="text" ref={inputRef}></input>
-            <button onClick={handleClick}>Alert Button</button>
+            <h1>Timer:{timeShow}</h1>
+            <button onClick={handleStart}>Start</button>
+            <button onClick={handleStop}>Stop</button>
+            <button onClick={handleStart}>Reset</button>
+            <button>Add</button>
+            <div>
+                <li></li>
+            </div>
+
+
         </>
     )
 }
