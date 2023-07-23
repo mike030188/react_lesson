@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 export const Main = styled.div`
 display: flex;
-justify-content: center;
 flex-direction: column;
 align-items: center;
 width: 100%;
 height: 100vh;
+padding-top: 50px;
 
 .button-wrap{
     padding: 40px 0px  ;
@@ -16,9 +16,9 @@ height: 100vh;
 .result-wrap{
     display:flex;
     flex-Direction:column;
-     justify-Content:left;
+    justify-Content:left;
     padding-Left:10px;
-    border: 1px solid #3333ff;
+    border: 1px solid violet;
     margin-left:10px;
     width: 395px;   
   
@@ -38,13 +38,14 @@ padding-left: 10px;
 h1{
     display:flex;   
     font-size: 40px;
-    background-color: #0088ff;
+    background-color: slateblue;
     color: white;
     justify-content: flex-start;
     width: 395px;
     align-items: center;
     padding-left: 10px;
     height: 90px;
+    border-radius: 8px;
 }
 
 `

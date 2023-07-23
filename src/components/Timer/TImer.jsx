@@ -66,9 +66,7 @@ export default function TimerComp(){
     
     return(
         <Main>
-            <div style={{display:'flex',
-                        flexDirection:'column', 
-                        justifyContent:'left'}}>
+            <div style={{display:'flex', flexDirection:'column', justifyContent:'left'}}>
                 <Title>
                     <h1>Timer: <div style={{marginLeft:'30px',color:'#00FFFF' }}>{timeShow}</div></h1>
                 </Title>
@@ -86,7 +84,7 @@ export default function TimerComp(){
                                 ...todoList, 
                             ])
                         }}
-                        >Add</Button>
+                    >Add</Button>
                 </div>
                 <div className="result-wrap">
                     <h2>Results:</h2>{todoList.sort((a, b) => a.id > b.id ? 1 : -1).map((item) => (
@@ -94,15 +92,17 @@ export default function TimerComp(){
                                     justifyContent:'space-between', 
                                     padding:'7px 0' , 
                                     color:'#778899', 
-                                    alignItems:'center'}} key={item.id}>
-                                        <div>{item.id+1}</div>(${liveTime})
-                                    <button style={{border:'none', 
-                                            backgroundColor:'transparent', 
-                                            paddingRight:'10px' }}>
-                                    <FaTrashAlt style={{color:'darkgrey', 
-                                                fontSize:'17px',
-                                                cursor: 'pointer'}} onClick={() => deleteTodo(item.id)} />
-                                    </button>
+                                    alignItems:'center'
+                                    
+                                }} key={item.id}><div>{item.id+1}</div>{liveTime}
+                                
+                                <button style={{border:'none', 
+                                        backgroundColor:'transparent', 
+                                        paddingRight:'10px' }}>
+                                <FaTrashAlt style={{color:'darkgrey', 
+                                            fontSize:'17px',
+                                            cursor: 'pointer'}} onClick={() => deleteTodo(item.id)} />
+                                </button>
                         </div>
                     ))}                
                 </div>
