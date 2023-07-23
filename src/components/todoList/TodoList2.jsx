@@ -156,21 +156,17 @@ const TodoList2 = () => {
                                     onChange={(e) => setEditText(e.target.value)} />) : (item.text)}
                     </div>
                                 
-                    <div style={{display:'flex', 
-                                flex: '2', 
-                                justifyContent: 'center',                        
-
-                                }}><select name="" id="" style={{border:'none', 
-                                                         background:'transparent',                                                             
-                                                         
-                                                         padding:'10px',
-                                                         width:'110px',
-                                                         height:'40px',}}>
-                                        <option value="" style={{color:'grey',
-                                                            }}>Todo</option>
-                                        <option value="" style={{color:'yellow'}}>In Progress</option>
-                                        <option value="" style={{color:'green'}}>Complete!</option>
-                                    </select>
+                    <div style={{display:'flex', flex: '2', justifyContent: 'center' }}>                                
+                        <select name="" id="" style={{border:'none', 
+                                                background:'transparent',                                                             
+                                                fontSize:'14px', 
+                                                padding:'10px',
+                                                width:'120px',
+                                                height:'40px',}}>
+                            <option value="" style={{color:'grey'}}>Todo</option>
+                            <option value="" style={{color:'yellow'}}>In Progress</option>
+                            <option value="" style={{color:'green'}}>Completed!</option>
+                        </select>
                     </div>       
                                              
                     <div style={{display:'flex', 

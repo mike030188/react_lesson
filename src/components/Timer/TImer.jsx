@@ -25,7 +25,7 @@ export default function TimerComp(){
         };
 
     useEffect(() => {
-        /* handleStart(); */
+        handleStart();
         return () => clearInterval(secondSetting.current);
     }, []);
     
@@ -83,18 +83,19 @@ export default function TimerComp(){
                                     id: todoList.length,
                                     text: text,
                                 }, 
-                                ...todoList,
+                                ...todoList, 
                             ])
                         }}
                         >Add</Button>
                 </div>
                 <div className="result-wrap">
-                    <h2>Results:</h2>{todoList.map((item) => (
+                    <h2>Results:</h2>{todoList.sort((a, b) => a.id > b.id ? 1 : -1).map((item) => (
                         <div style={{display:'flex', 
                                     justifyContent:'space-between', 
                                     padding:'7px 0' , 
                                     color:'#778899', 
-                                    alignItems:'center'}} key={item.id}>{liveTime}
+                                    alignItems:'center'}} key={item.id}>
+                                        <div>{item.id+1}</div>(${liveTime})
                                     <button style={{border:'none', 
                                             backgroundColor:'transparent', 
                                             paddingRight:'10px' }}>

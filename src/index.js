@@ -17,11 +17,11 @@ root.render(
 
     {/* <TodoList1/> */}    {/* useState */}
 
-    <TodoList2/>   {/* useState && Popup */}
+    {/* <TodoList2/> */}   {/* useState && Popup (incl. HomeTask) */}
 
-  {/* <UseRefComponent /> */}     {/* Alert, Timer */}
+  {/* <UseRefComponent /> */}     {/* Alert, Timer, useRef */}
 
-  {/* <TimerComp/> */}   {/* HomeTask */}
+  <TimerComp/>   {/* HomeTask */}
 
   {/* <PopupComp/> */}
     
