@@ -27,35 +27,33 @@ p{
 
 export const Input = styled.div`
 display:flex;
+justify-content: right;
 width: 1000px;
 margin-bottom: 15px;
 
-input{
-    width: 100%;
-    margin-right: 30px;    
-    border-radius: 7px;
-    padding: 10px;
-    font-size:16px;
-    border:none; 
-    
-    
-}
 
-button{
+
+
+
+`
+export const Button = styled.div`
+    text-align: center;
     background-color: #FFF;
     width: 120px;
-    padding:10px;
+    padding: 10px 0;
     border-radius: 7px;
     border: 1px solid #00ffff;
     font-size: 16px;
     color: #00ffff;
     font-weight: 500;
-    
-}
+    cursor: pointer;
 
+    &:hover { 
+        background-color: #00ffff;
+        color: #FFF;
 
+    }
 `
-
 
 export const Title = styled.div`
 display: flex;

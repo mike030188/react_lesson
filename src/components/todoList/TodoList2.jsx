@@ -1,7 +1,10 @@
 import React, { useState }  from "react";
-import {Container, Input, Main, Task, Title} from "./TodoList2.style";
+import {Button, Container, Input, Main, Task, Title} from "./TodoList2.style";
 import { FaTrashAlt } from "react-icons/fa";
 import {GrEdit} from 'react-icons/gr';
+import Popup from 'reactjs-popup';
+import '../../index.css'
+
 
 
 function toListInfo() {
@@ -27,16 +30,7 @@ const TodoList2 = () => {
     const handleChange = (e) => {
         setText(e.target.value);
       };
-
-    const statusTodo = () => {
-        if (todoList(item.status) === "Todo") {
-            item.status == "In Progress";
-        } else if (todoList(item.status) === "In Process") {
-            item.status == "Completed";
-        }
-        return item.status     
-
-    }
+   
 
     const handleEditClick = (id, text) => {
         setEditItemId(id);
@@ -64,15 +58,56 @@ const TodoList2 = () => {
                 }}>Do it now.</p> 
         </div>     
         <Input>
-            <input type="text" value={text} onChange={handleChange} />
-            <button onClick={() => {setText(""); 
-                    setTodoList([{
-                    id: todoList.length,
-                    text: text,
-                    },
-                    ...todoList,
-                ]);
-                }}>Add Task</button>
+        <Popup
+                trigger={<Button > Add Task </Button>}
+                modal
+                nested
+            >
+                {close => (
+                <div className="modal">
+                    <button className="close" onClick={close}>
+                    &times;
+                    </button>
+                    <div className="header"> New Task </div>
+                    <div className="content">
+                    <button>Task</button>
+                    <input type="text" placeholder='Description of task'                         
+                        value={text}
+                        onChange={handleChange}
+                      />
+                
+                    
+                    </div>
+
+                    <div className="actions">
+                    <div>
+                        <button className="button" onClick={close}> Close </button>                  
+                    
+                    </div>
+                    <button style={{ background:'rgb(0,0,255)'}}
+                        className="button"
+                        onClick={() => {
+                            
+                            setText("");
+                            setTodoList([
+                              {
+                                id: todoList.length,
+                                text: text,
+                              },
+                              ...todoList,
+                            ]);
+                            console.log('modal close');
+                            close();
+                            
+                          }}
+
+                    >
+                        SAVE
+                    </button>
+                    </div>
+                </div>
+                )}
+            </Popup>
         </Input>               
             <Title>
                 <div style={{display:'flex', 
@@ -125,11 +160,18 @@ const TodoList2 = () => {
                                 flex: '2', 
                                 justifyContent: 'center',                        
 
-                                }}>
-                                    <button style={{border:'1px solid orange',
-                                                padding:'10px',
-                                                color:'orange'
-                                                }} onClick={() => statusTodo(item.id)}>{item.status}</button></div>       
+                                }}><select name="" id="" style={{border:'none', 
+                                                         background:'transparent',                                                             
+                                                         
+                                                         padding:'10px',
+                                                         width:'110px',
+                                                         height:'40px',}}>
+                                        <option value="" style={{color:'grey',
+                                                            }}>Todo</option>
+                                        <option value="" style={{color:'yellow'}}>In Progress</option>
+                                        <option value="" style={{color:'green'}}>Complete!</option>
+                                    </select>
+                    </div>       
                                              
                     <div style={{display:'flex', 
                                 flex: '1',  

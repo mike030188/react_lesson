@@ -9,7 +9,7 @@ align-items: center;
 width: 100%;
 height: 100vh;
 
-.buttonwrap{
+.button-wrap{
     padding: 40px 0px  ;
     display: flex;
 }

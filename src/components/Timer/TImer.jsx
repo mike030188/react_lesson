@@ -20,12 +20,12 @@ export default function TimerComp(){
     const [todoList, setTodoList] = useState(timeListInfo);
     const [text, setText] = useState("");  
     
-     const deleteTodo = (id) => {
+    const deleteTodo = (id) => {
         setTodoList(todoList.filter((item) => item.id !== id));
         };
 
     useEffect(() => {
-        handleStart();
+        /* handleStart(); */
         return () => clearInterval(secondSetting.current);
     }, []);
     
@@ -33,8 +33,9 @@ export default function TimerComp(){
         clearInterval(secondSetting.current);
         interval = setInterval(startTime, 10)
 
+        
         secondSetting.current = setInterval(() =>{
-            
+                       
             setLiveTime((prev)=> prev + 1);
             console.log(startTime);
         }, 10)       
@@ -71,7 +72,7 @@ export default function TimerComp(){
                 <Title>
                     <h1>Timer: <div style={{marginLeft:'30px',color:'#00FFFF' }}>{timeShow}</div></h1>
                 </Title>
-                <div className="buttonwrap">
+                <div className="button-wrap">
                     <Button onClick={handleStart}>Start</Button>
                     <Button onClick={handlePause}>Pause</Button>
                     <Button onClick={handleReset}>Reset</Button>
