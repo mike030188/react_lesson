@@ -67,12 +67,6 @@ export default function UseRefComponent(){
             <h1>Timer:{timeShow}</h1>
             <button onClick={handleStart}>Start</button>
             <button onClick={handleStop}>Stop</button>
-            <button onClick={handleStart}>Reset</button>
-            <button>Add</button>
-            <div>
-                <li></li>
-            </div>
-
 
         </>
     )
