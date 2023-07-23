@@ -1,4 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
+import { FaTrashAlt } from 'react-icons/fa';
+import { Button, Main, Title } from './TimerStyle';
 
 function timeListInfo() {
     const timeListText = [];
@@ -18,7 +20,9 @@ export default function TimerComp(){
     const [todoList, setTodoList] = useState(timeListInfo);
     const [text, setText] = useState("");  
     
-    
+     const deleteTodo = (id) => {
+        setTodoList(todoList.filter((item) => item.id !== id));
+        };
 
     useEffect(() => {
         handleStart();
@@ -33,9 +37,7 @@ export default function TimerComp(){
             
             setLiveTime((prev)=> prev + 1);
             console.log(startTime);
-        }, 10)
-
-        
+        }, 10)       
         
     };
 
@@ -54,10 +56,7 @@ export default function TimerComp(){
     }
 
     let timeShow = 0,
-        interval
-
-
-
+        interval;
 
         if (startTime != null && liveTime != null) {
             timeShow = (liveTime - startTime) / 1000;
@@ -65,30 +64,47 @@ export default function TimerComp(){
 
     
     return(
-        <>
-            <h1>Timer:{timeShow}</h1>
-            <button onClick={handleStart}>Start</button>
-            <button onClick={handlePause}>Pause</button>
-            <button onClick={handleReset}>Reset</button>
-            <button 
-                onClick={() => {
-                    setText("");
-                    setTodoList([
-                        {
-                            id: todoList.length,
-                            text: text,
-                        }, 
-                        ...todoList,
-                    ])
-                }}
-                >Add</button>
-            <div>Results:{todoList.map((item) => (
-                <div key={item.id}>{liveTime}</div>
-            ))}
-                
+        <Main>
+            <div style={{display:'flex',
+                        flexDirection:'column', 
+                        justifyContent:'left'}}>
+                <Title>
+                    <h1>Timer: <div style={{marginLeft:'30px',color:'#00FFFF' }}>{timeShow}</div></h1>
+                </Title>
+                <div className="buttonwrap">
+                    <Button onClick={handleStart}>Start</Button>
+                    <Button onClick={handlePause}>Pause</Button>
+                    <Button onClick={handleReset}>Reset</Button>
+                    <Button onClick={() => {
+                            setText("");
+                            setTodoList([
+                                {
+                                    id: todoList.length,
+                                    text: text,
+                                }, 
+                                ...todoList,
+                            ])
+                        }}
+                        >Add</Button>
+                </div>
+                <div className="result-wrap">
+                    <h2>Results:</h2>{todoList.map((item) => (
+                        <div style={{display:'flex', 
+                                    justifyContent:'space-between', 
+                                    padding:'7px 0' , 
+                                    color:'#778899', 
+                                    alignItems:'center'}} key={item.id}>{liveTime}
+                                    <button style={{border:'none', 
+                                            backgroundColor:'transparent', 
+                                            paddingRight:'10px' }}>
+                                    <FaTrashAlt style={{color:'darkgrey', 
+                                                fontSize:'17px',
+                                                cursor: 'pointer'}} onClick={() => deleteTodo(item.id)} />
+                                    </button>
+                        </div>
+                    ))}                
+                </div>
             </div>
-
-
-        </>
+        </Main>
     )
 }
