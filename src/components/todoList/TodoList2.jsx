@@ -26,6 +26,13 @@ const TodoList2 = () => {
     const [text, setText] = useState("");
     const [editText, setEditText] = useState("");
     const [editItemId, setEditItemId] = useState("");
+    const [status, setStatus] = useState("");
+    
+
+
+    const handleStatusChange = (e) => {
+        setStatus(e.target.value);
+      };
 
     const handleChange = (e) => {
         setText(e.target.value);
@@ -49,6 +56,8 @@ const TodoList2 = () => {
         setTodoList(todoList.filter((item) => item.id !== id));
         };
 
+
+        console.log("status:", status)
   return (
     <Main>
         <div style={{display:'flex', flexDirection:'column', width:'1000px'}}>
@@ -74,6 +83,10 @@ const TodoList2 = () => {
                     <input type="text" placeholder='Description of task'                         
                         value={text}
                         onChange={handleChange}
+                      />
+                      <input type="text" placeholder='status'                         
+                        value={status}
+                        onChange={handleStatusChange}
                       />
                 
                     
@@ -156,17 +169,9 @@ const TodoList2 = () => {
                                     onChange={(e) => setEditText(e.target.value)} />) : (item.text)}
                     </div>
                                 
-                    <div style={{display:'flex', flex: '2', justifyContent: 'center' }}>                                
-                        <select name="" id="" style={{border:'none', 
-                                                background:'transparent',                                                             
-                                                fontSize:'14px', 
-                                                padding:'10px',
-                                                width:'120px',
-                                                height:'40px',}}>
-                            <option value="" style={{color:'grey'}}>Todo</option>
-                            <option value="" style={{color:'yellow'}}>In Progress</option>
-                            <option value="" style={{color:'green'}}>Completed!</option>
-                        </select>
+                    <div style={{display:'flex', flex: '2', justifyContent: 'center' }}>     
+                    
+                    {item?.status || "broken data"}
                     </div>       
                                              
                     <div style={{display:'flex', 
