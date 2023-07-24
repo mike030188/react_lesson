@@ -171,7 +171,18 @@ const TodoList2 = () => {
                                 
                     <div style={{display:'flex', flex: '2', justifyContent: 'center' }}>     
                     
-                    {item?.status || "broken data"}
+                    {/* {item?.status || "broken data"} */}
+                    <select name="" id="" style={{border:'none', 
+                                                         background:'transparent',                                                             
+                                                         textAlign:'center',
+                                                         padding:'10px',
+                                                         width:'130px',
+                                                         height:'40px',
+                                                         fontSize:'16px'}}>
+                                        <option value="" style={{color:'grey', fontSize:'16px'}}>Todo</option>
+                                        <option value="" style={{color:'orange', fontSize:'16px'}}>In Progress</option>
+                                        <option value="" style={{color:'green', fontSize:'16px'}}>Completed!</option>
+                                    </select>
                     </div>       
                                              
                     <div style={{display:'flex', 
