@@ -4,10 +4,10 @@ import { Button, Main, Title } from './TimerStyle';
 
 function timeListInfo() {
     const timeListText = [];
-    for (let i = 0; i < 0 ; i++) {
+    for (let i = 0; i < timeListText.length ; i++) {
         timeListText.push({
             id: i,
-            text: "Result:" + (i + 1),
+            text: "Timer:" + (i + 1),
         });
     }
 
@@ -31,15 +31,19 @@ export default function TimerComp(){
     
     const handleStart = () => {    
         clearInterval(secondSetting.current);
-        interval = setInterval(startTime, 10)
+        /* const startTime = Date.now();   
+        setStartTime(startTime); */
 
         
         secondSetting.current = setInterval(() =>{
-                       
+
             setLiveTime((prev)=> prev + 1);
             console.log(startTime);
-        }, 10)       
+        }, 10)      
         
+        /* secondSetting.current = setInterval(() => {
+            setLiveTime(Date.now());
+          }, 10); */
     };
 
     const secondSetting = useRef();
@@ -56,8 +60,8 @@ export default function TimerComp(){
         }, 10);
     }
 
-    let timeShow = 0,
-        interval;
+    let timeShow = 0;
+        
 
         if (startTime != null && liveTime != null) {
             timeShow = (liveTime - startTime) / 1000;
@@ -79,7 +83,7 @@ export default function TimerComp(){
                             setTodoList([
                                 {
                                     id: todoList.length,
-                                    text: text,
+                                    text: timeShow.toFixed(2),
                                 }, 
                                 ...todoList, 
                             ])
@@ -94,7 +98,7 @@ export default function TimerComp(){
                                     color:'#778899', 
                                     alignItems:'center'
                                     
-                                }} key={item.id}><div>{item.id+1}</div>{liveTime}
+                                }} key={item.id}><div>{item.id + 1}</div>{item.text}
                                 
                                 <button style={{border:'none', 
                                         backgroundColor:'transparent', 
