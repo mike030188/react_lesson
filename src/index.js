@@ -7,6 +7,7 @@ import TodoList2 from './components/todoList/TodoList2';
 import UseRefComponent from './components/hook/useRef';
 import TimerComp from './components/Timer/TImer';
 import PopupComp from './components/hook/Popup';
+import UseReducerComp from './components/hook/useReducer';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -17,13 +18,15 @@ root.render(
 
     {/* <TodoList1/> */}    {/* useState */}
 
-    <TodoList2/>   {/* useState && Popup (incl. HomeTask) */}
+    {/* <TodoList2/> */}   {/* useState && Popup (incl. HomeTask - done) */}
 
-  {/* <UseRefComponent /> */}     {/* Alert, Timer, useRef */}
+    {/* <UseRefComponent /> */}     {/* Alert, Timer, useRef */}
 
-  {/* <TimerComp/>  */}  {/* HomeTask - done!*/}
+    {/* <TimerComp/>  */}  {/* HomeTask - done!*/}
 
-  {/* <PopupComp/> */}
+    {/* <PopupComp/> */}
+
+    <UseReducerComp/>
     
     
   </React.StrictMode>
