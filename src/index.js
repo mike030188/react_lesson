@@ -8,6 +8,7 @@ import UseRefComponent from './components/hook/useRef';
 import TimerComp from './components/Timer/TImer';
 import PopupComp from './components/hook/Popup';
 import UseReducerComp from './components/hook/useReducer';
+import ZindexMinus from './components/test/w3school';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -26,7 +27,9 @@ root.render(
 
     {/* <PopupComp/> */}
 
-    <UseReducerComp/>
+    {/* <UseReducerComp/> */}
+
+    <ZindexMinus/>
     
     
   </React.StrictMode>
